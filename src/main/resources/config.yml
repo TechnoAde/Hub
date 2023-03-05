@@ -8,7 +8,9 @@ messages:
     - "ciccio2"
     - "ciccioriccio"
   repetemessages:
-    - "&bciccio 1 \n &cciccionero"
+    - "Bastardo"
+    - "Vengo da reggio"
+    - "Emilia"
 
 playerhider:
   hidetitle: "&c&lPLAYER NASCOSTI"
@@ -18,5 +20,4 @@ book:
   author: "sburra"
   title: "cacca"
   text:
-    - "ciccio"
-    - "ciccio"
+    - "&bciccio 1 \n &cciccionero"

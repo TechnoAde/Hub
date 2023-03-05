@@ -26,6 +26,7 @@ public class JoinL implements Listener {
         if(plugin.getConfig().getString("message.joinbc") != null) Bukkit.broadcastMessage(plugin.getConfig().getString("message.joinbc")); else Bukkit.getLogger().info("message.joinbc non è stato definito");
         if(plugin.getConfig().getString("message.privatemsg") != null) plugin.getConfig().getStringList("message.privatemsg").forEach(t -> e.getPlayer().sendMessage(t));
         e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
+        e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem());
     }
 
     @EventHandler

@@ -22,7 +22,6 @@ public class BookPacket {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
         BookMeta meta = (BookMeta) book.getItemMeta();
         if (meta != null) {
-            meta.setAuthor(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("book.author"))));
             meta.setTitle(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("book.title"))));
             meta.setPages(plugin.getConfig().getStringList("book.text").stream().map(s -> org.bukkit.ChatColor.translateAlternateColorCodes('&', s)).collect(Collectors.toList()));
         }
