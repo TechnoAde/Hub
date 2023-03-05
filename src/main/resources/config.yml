@@ -14,7 +14,7 @@ messages:
 
 playerhider:
   hidetitle: "&c&lPLAYER NASCOSTI"
-  showtitle: "&b&lPLAYER MOSTRATI"
+  showtitle: "&b&lPLAYER VISIBILI"
 
 book:
   author: "sburra"

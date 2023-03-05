@@ -3,7 +3,6 @@ package it.techonade.hub.listeners;
 import it.techonade.hub.Main;
 import it.techonade.hub.items.ItemsL;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -16,12 +15,14 @@ public class InteractL implements Listener {
     public void itemHeldInteract(PlayerInteractEvent e) {
         if(e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if(e.getItem() != null) {
-                if(e.getItem().equals(ItemsL.PLAYER_SHOWED.getItem())) {
-                    e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_HIDED.getItem());
-                    for(Player p : Bukkit.getOnlinePlayers()) {p.hidePlayer(Main.getInstance(), p);}
-                } else {
-                    e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
-                    for(Player p : Bukkit.getOnlinePlayers()) {p.showPlayer(Main.getInstance(), p);}
+                if(e.getItem().hasItemMeta() && e.getItem().getItemMeta().hasDisplayName()) {
+                    if(e.getItem().getItemMeta().getDisplayName().equals(Main.plugin.getConfig().getString("playerhider.showtitle"))) {
+                        e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_HIDED.getItem());
+                        Bukkit.getOnlinePlayers().stream().filter(p -> !p.equals(e.getPlayer())).forEach(e.getPlayer()::hidePlayer);
+                    } else if(e.getItem().getItemMeta().getDisplayName().equals(Main.plugin.getConfig().getString("playerhider.hidetitle"))) {
+                        e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
+                        Bukkit.getOnlinePlayers().stream().filter(p -> !p.equals(e.getPlayer())).forEach(e.getPlayer()::showPlayer);
+                    }
                 }
             }
         }
