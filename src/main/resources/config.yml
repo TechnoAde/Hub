@@ -1,0 +1,22 @@
+#Configuration
+
+#Messages
+
+messages:
+  joinbc: "ciccio1"
+  privatemsg:
+    - "ciccio2"
+    - "ciccioriccio"
+  repetemessages:
+    - "&bciccio 1 \n &cciccionero"
+
+playerhider:
+  hidetitle: "&c&lPLAYER NASCOSTI"
+  showtitle: "&b&lPLAYER MOSTRATI"
+
+book:
+  author: "sburra"
+  title: "cacca"
+  text:
+    - "ciccio"
+    - "ciccio"

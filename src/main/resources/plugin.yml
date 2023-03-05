@@ -1,0 +1,4 @@
+name: Hub
+version: '${project.version}'
+main: it.techonade.hub.Main
+api-version: 1.19
