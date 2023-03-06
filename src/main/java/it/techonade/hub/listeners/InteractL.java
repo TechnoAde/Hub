@@ -2,6 +2,7 @@ package it.techonade.hub.listeners;
 
 import it.techonade.hub.Main;
 import it.techonade.hub.items.ItemsL;
+import it.techonade.hub.utils.Patterns;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,13 +29,13 @@ public class InteractL implements Listener {
                     final String hidetitle = plugin.getConfig().getString("playerhider.hidetitle");
                     final String enderbutttitle = plugin.getConfig().getString("enderbutt.title");
                     if(showtitle != null && hidetitle != null && enderbutttitle != null) {
-                        if(e.getItem().getItemMeta().getDisplayName().equals(showtitle.replaceAll("&", "§"))) {
+                        if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(showtitle))) {
                             e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_HIDED.getItem());
-                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(e.getPlayer()::hidePlayer);
-                        } else if(e.getItem().getItemMeta().getDisplayName().equals(hidetitle.replaceAll("&", "§"))) {
+                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().hidePlayer(Main.getInstance(),p));
+                        } else if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(hidetitle))) {
                             e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
-                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(e.getPlayer()::showPlayer);
-                        } else if(e.getItem().getItemMeta().getDisplayName().equals(enderbutttitle.replaceAll("&", "§"))) {
+                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().showPlayer(Main.getInstance(),p));
+                        } else if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(enderbutttitle))) {
                             Bukkit.getScheduler().runTaskLater(plugin, () -> e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem()), 1);
                         }
                     } else {

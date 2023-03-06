@@ -3,6 +3,7 @@ package it.techonade.hub.listeners;
 import it.techonade.hub.Main;
 import it.techonade.hub.items.ItemsL;
 import it.techonade.hub.nms.BookPacket;
+import it.techonade.hub.utils.Patterns;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,10 +24,12 @@ public class JoinL implements Listener {
     @EventHandler
     public void joinA(PlayerJoinEvent e) {
         bookPacket.openBook(e.getPlayer());
-        if(plugin.getConfig().getString("message.joinbc") != null) Bukkit.broadcastMessage(plugin.getConfig().getString("message.joinbc")); else Bukkit.getLogger().info("message.joinbc non è stato definito");
+        if(plugin.getConfig().getString("message.joinbc") != null || !plugin.getConfig().getString("message.joinbc").equals("")) Bukkit.broadcastMessage(Patterns.colorPatterns(plugin.getConfig().getString("message.joinbc").replaceAll("%player%",e.getPlayer().getName()))); else Bukkit.getLogger().info("message.joinbc non è stato definito");
         if(plugin.getConfig().getString("message.privatemsg") != null) plugin.getConfig().getStringList("message.privatemsg").forEach(t -> e.getPlayer().sendMessage(t));
         e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
         e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem());
+        Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_HIDED.getItem())).forEach(p -> p.hidePlayer(Main.getInstance(),e.getPlayer()));
+        Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_SHOWED.getItem())).forEach(p -> p.showPlayer(Main.getInstance(),e.getPlayer()));
     }
 
     @EventHandler

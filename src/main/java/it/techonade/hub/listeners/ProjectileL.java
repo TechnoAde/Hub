@@ -23,7 +23,7 @@ public class ProjectileL implements Listener {
         if(e.getEntity() instanceof Projectile && e.getEntity() instanceof EnderPearl) {
             final Projectile projectile = (Projectile) e.getEntity();
             final Player shooter = (Player) projectile.getShooter();
-            if(shooter != null) {projectile.setPassenger(shooter);}
+            if(shooter != null) { projectile.addPassenger(shooter); }
         }
     }
 
