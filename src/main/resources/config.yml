@@ -18,9 +18,11 @@ playerhider:
 
 enderbutt:
   title: "Ciccio"
+  alreadyFlying: "cicciogamer"
 
 book:
   author: "sburra"
   title: "cacca"
   text:
     - "&bciccio 1 \n &cciccionero"
+
