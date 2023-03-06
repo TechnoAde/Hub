@@ -16,6 +16,9 @@ playerhider:
   hidetitle: "&c&lPLAYER NASCOSTI"
   showtitle: "&b&lPLAYER VISIBILI"
 
+enderbutt:
+  title: "Ciccio"
+
 book:
   author: "sburra"
   title: "cacca"

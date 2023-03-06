@@ -24,6 +24,6 @@ public class AutoMessage {
                     index = 0;
                 }
             }
-        }.runTaskTimer(Main.plugin, MESSAGE_DELAY_SECONDS * 20L, MESSAGE_DELAY_SECONDS * 20L);
+        }.runTaskTimerAsynchronously(Main.plugin, MESSAGE_DELAY_SECONDS * 20L, MESSAGE_DELAY_SECONDS * 20L);
     }
 }
