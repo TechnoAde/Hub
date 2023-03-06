@@ -28,8 +28,8 @@ public class JoinL implements Listener {
         if(plugin.getConfig().getString("message.privatemsg") != null) plugin.getConfig().getStringList("message.privatemsg").forEach(t -> e.getPlayer().sendMessage(t));
         e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
         e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem());
-        Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_HIDED.getItem())).forEach(p -> p.hidePlayer(Main.getInstance(),e.getPlayer()));
-        Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_SHOWED.getItem())).forEach(p -> p.showPlayer(Main.getInstance(),e.getPlayer()));
+        Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_HIDED.getItem())).forEach(p -> p.hidePlayer(plugin,e.getPlayer()));
+        Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_SHOWED.getItem())).forEach(p -> p.showPlayer(plugin,e.getPlayer()));
     }
 
     @EventHandler

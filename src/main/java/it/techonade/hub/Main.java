@@ -16,17 +16,24 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        configSetup();
+        setupListeners();
+        registerTasks();
+    }
+    private void registerTasks(){
+        AutoMessage.AutoMessageU();
+    }
+    private void setupListeners(){
         new JoinL(this, bookPacket);
         new InteractL(this);
         new ProjectileL(this);
         new DeathL(this);
-        AutoMessage.AutoMessageU();
-        getConfig().options().copyDefaults(true);
-        saveDefaultConfig();
     }
 
-    public static Main getInstance() {
-        return plugin;
+    private void configSetup(){
+        getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
+        reloadConfig();
     }
     
 }

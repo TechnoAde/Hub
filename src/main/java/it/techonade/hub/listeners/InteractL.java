@@ -31,10 +31,10 @@ public class InteractL implements Listener {
                     if(showtitle != null && hidetitle != null && enderbutttitle != null) {
                         if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(showtitle))) {
                             e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_HIDED.getItem());
-                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().hidePlayer(Main.getInstance(),p));
+                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().hidePlayer(plugin,p));
                         } else if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(hidetitle))) {
                             e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
-                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().showPlayer(Main.getInstance(),p));
+                            Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().showPlayer(plugin,p));
                         } else if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(enderbutttitle))) {
                             Bukkit.getScheduler().runTaskLater(plugin, () -> e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem()), 1);
                         }
