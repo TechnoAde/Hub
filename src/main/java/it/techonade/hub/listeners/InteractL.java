@@ -36,7 +36,11 @@ public class InteractL implements Listener {
                             e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
                             Bukkit.getOnlinePlayers().stream().parallel().filter(p -> !p.equals(e.getPlayer())).forEach(p -> e.getPlayer().showPlayer(plugin,p));
                         } else if(e.getItem().getItemMeta().getDisplayName().equals(Patterns.colorPatterns(enderbutttitle))) {
-                            Bukkit.getScheduler().runTaskLater(plugin, () -> e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem()), 1);
+                            if(e.getPlayer().isInsideVehicle()) {
+                                e.setCancelled(true); Bukkit.getScheduler().runTaskLater(plugin, () -> e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem()), 1);
+                            } else {
+                                Bukkit.getScheduler().runTaskLater(plugin, () -> e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem()), 1);
+                            }
                         }
                     } else {
                         Bukkit.getLogger().info("Il titolo è vuoto");

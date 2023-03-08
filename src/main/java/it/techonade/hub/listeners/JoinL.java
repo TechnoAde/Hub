@@ -3,6 +3,7 @@ package it.techonade.hub.listeners;
 import it.techonade.hub.Main;
 import it.techonade.hub.items.ItemsL;
 import it.techonade.hub.nms.BookPacket;
+import it.techonade.hub.nms.TabManager;
 import it.techonade.hub.utils.Patterns;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -28,6 +29,7 @@ public class JoinL implements Listener {
         if(plugin.getConfig().getString("messages.privatemsg") != null) plugin.getConfig().getStringList("messages.privatemsg").forEach(t -> e.getPlayer().sendMessage(t));
         e.getPlayer().getInventory().setItem(8, ItemsL.PLAYER_SHOWED.getItem());
         e.getPlayer().getInventory().setItem(6, ItemsL.ENDERBUTT.getItem());
+        Main.plugin.tab.showTab(e.getPlayer());
         Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_HIDED.getItem())).forEach(p -> p.hidePlayer(plugin,e.getPlayer()));
         Bukkit.getOnlinePlayers().stream().parallel().filter(p -> p.getInventory().contains(ItemsL.PLAYER_SHOWED.getItem())).forEach(p -> p.showPlayer(plugin,e.getPlayer()));
     }

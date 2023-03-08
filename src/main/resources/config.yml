@@ -26,3 +26,19 @@ book:
   text:
     - "&bciccio 1 \n &cciccionero"
 
+tab:
+  header:
+    - "&b%player_name% &0&lCicciogamerAllaSeconda"
+    - "&0&lCicciogamerAllaSeconda"
+    - "&0&lCicciogamerAllaSeconda"
+    - "&f&lCicciogamerAllaSeconda"
+    - "&f&lCicciogamerAllaSeconda"
+    - "&f&lCicciogamerAllaSeconda"
+    - "&4&lCicciogamerAllaSeconda"
+    - "&4&lCicciogamerAllaSeconda"
+    - "&4&lCicciogamerAllaSeconda"
+    - ""
+  footer:
+    - ""
+    - "&bCicciogamerDiMerda"
+    - "&bCicciogamerAllaSeconda"
